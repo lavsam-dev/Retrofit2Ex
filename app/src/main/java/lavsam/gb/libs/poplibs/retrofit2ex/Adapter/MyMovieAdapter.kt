@@ -47,7 +47,6 @@ class MyMovieAdapter(private val context: Context, private val movieList: Mutabl
         val urlHabr = "https://www.simplifiedcoding.net/demos/marvel/ironman.jpg"
         val urlGithab = "https://avatars.githubusercontent.com/u/2?v=4"
         val urlPokemon = "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/1.png"
-        val urlPolar = "https://support.polar.com/e_manuals/vantage-v/polar-vantage-v-user-manual-russian/content/resources/images/vantage-v_front_black_running_hr147_321x321.png"
         Picasso.get()
             .load(url)
             .placeholder(R.drawable.ic_launcher_background)
