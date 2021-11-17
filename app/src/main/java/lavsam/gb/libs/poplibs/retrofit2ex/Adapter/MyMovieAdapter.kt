@@ -43,8 +43,16 @@ class MyMovieAdapter(private val context: Context, private val movieList: Mutabl
     override fun onBindViewHolder(holder: MyViewHolder, position: Int) {
         val listItem = movieList[position]
         holder.bind(listItem)
-
-        Picasso.get().load(movieList[position].imageurl).into(holder.image)
+        val url = movieList[position].imageurl
+        val urlHabr = "https://www.simplifiedcoding.net/demos/marvel/ironman.jpg"
+        val urlGithab = "https://avatars.githubusercontent.com/u/2?v=4"
+        val urlPokemon = "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/1.png"
+        val urlPolar = "https://support.polar.com/e_manuals/vantage-v/polar-vantage-v-user-manual-russian/content/resources/images/vantage-v_front_black_running_hr147_321x321.png"
+        Picasso.get()
+            .load(url)
+            .placeholder(R.drawable.ic_launcher_background)
+            .placeholder(R.drawable.ic_launcher_foreground)
+            .into(holder.image)
         holder.txt_name.text = movieList[position].name
         holder.txt_team.text = movieList[position].team
         holder.txt_createdby.text = movieList[position].createdby
