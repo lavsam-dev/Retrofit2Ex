@@ -3,6 +3,31 @@ package lavsam.gb.libs.poplibs.retrofit2ex.Model
 import com.google.gson.annotations.SerializedName
 
 data class Movie(
+    // Pokemon делаю...
+    @SerializedName("count")
+    var count: Int? = null,
+    @SerializedName("next")
+    var next: String? = null,
+    @SerializedName("previous")
+    var previous: String? = null,
+    @SerializedName("results")
+    var results: List<Pokemon>? = listOf()
+)
+
+data class Pokemon(
+    var page: Int = 0,
+    @SerializedName("name")
+    var name: String? = null,
+    @SerializedName("url")
+    var url: String? = null,
+) {
+    fun getImageUrl(): String {
+        val index = url?.split("/".toRegex())?.dropLast(1)?.last()
+        return "https://pokeres.bastionbot.org/images/pokemon/$index.png"
+    }
+}
+/*
+Github
     @SerializedName("login")
     var name: String? = null,
     @SerializedName("avatar_url")
@@ -11,8 +36,10 @@ data class Movie(
     var team: String? = null,
     @SerializedName("node_id")
     var createdby: String? = null
-)
+
+ */
 /*
+habr
     var name: String? = null,
     var realname: String? = null,
     var team: String? = null,
