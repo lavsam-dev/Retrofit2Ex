@@ -2,7 +2,7 @@ package lavsam.gb.libs.poplibs.retrofit2ex.Model
 
 import com.google.gson.annotations.SerializedName
 
-data class Movie(
+data class Movies(
     // Pokemon делаю...
     @SerializedName("count")
     var count: Int? = null,
@@ -11,10 +11,10 @@ data class Movie(
     @SerializedName("previous")
     var previous: String? = null,
     @SerializedName("results")
-    var results: List<Pokemon>? = listOf()
+    var results: List<Movie>? = listOf()
 )
 
-data class Pokemon(
+data class Movie(
     var page: Int = 0,
     @SerializedName("name")
     var name: String? = null,
@@ -23,7 +23,7 @@ data class Pokemon(
 ) {
     fun getImageUrl(): String {
         val index = url?.split("/".toRegex())?.dropLast(1)?.last()
-        return "https://pokeres.bastionbot.org/images/pokemon/$index.png"
+        return "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/$index.png"
     }
 }
 /*
