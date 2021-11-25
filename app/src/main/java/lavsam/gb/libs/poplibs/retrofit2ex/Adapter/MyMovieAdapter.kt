@@ -8,6 +8,7 @@ import android.widget.ImageView
 import android.widget.TextView
 import android.widget.Toast
 import androidx.recyclerview.widget.RecyclerView
+import com.bumptech.glide.Glide
 import com.squareup.picasso.Picasso
 import kotlinx.android.synthetic.main.item_layout.view.*
 import lavsam.gb.libs.poplibs.retrofit2ex.Model.Movie
@@ -49,15 +50,20 @@ class MyMovieAdapter(private val context: Context, private val movies: Movies):
 //        val url = listItem.imageurl
 //        val urlHabr = "https://www.simplifiedcoding.net/demos/marvel/ironman.jpg"
 //        val urlGithab = "https://avatars.githubusercontent.com/u/2?v=4"
-//        val urlPokemon = "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/1.png"
-        val urlPokemon = listItem.getImageUrl()
+//        val url = "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/1.png"
+        val url = listItem.getImageUrl(null)
+//        val url = "http://image.tmdb.org/t/p/w200/cinER0ESG0eJ49kXlExM0MEWGxW.jpg"
+//        val url = "https://avatars.githubusercontent.com/u/1?v=4"
+//        Glide.with(holder.image.context).load(url).into(holder.image)
         Picasso.get()
-            .load(urlPokemon)
+            .load(url)
             .placeholder(R.drawable.ic_launcher_background)
             .error(R.drawable.ic_launcher_foreground)
+            .fit()
             .into(holder.image)
+
         holder.txt_name.text = listItem.name
-        holder.txt_team.text = listItem.name
+        holder.txt_team.text = url
         holder.txt_createdby.text = listItem.name
     }
 

@@ -3,6 +3,11 @@ package lavsam.gb.libs.poplibs.retrofit2ex.Model
 import com.google.gson.annotations.SerializedName
 
 data class Movies(
+    /*
+    @SerializedName("page")
+    var count: Int? = null,
+    @SerializedName("results")
+    var results: List<Movie>? = listOf()*/
     // Pokemon делаю...
     @SerializedName("count")
     var count: Int? = null,
@@ -12,18 +17,27 @@ data class Movies(
     var previous: String? = null,
     @SerializedName("results")
     var results: List<Movie>? = listOf()
+
 )
 
 data class Movie(
+    /*var page: Int = 0,
+    @SerializedName("title")
+    var name: String? = null,
+    @SerializedName("backdrop_path")
+    var url: String? = null*/
     var page: Int = 0,
     @SerializedName("name")
     var name: String? = null,
     @SerializedName("url")
-    var url: String? = null,
+    var url: String? = null
 ) {
-    fun getImageUrl(): String {
-        val index = url?.split("/".toRegex())?.dropLast(1)?.last()
-        return "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/$index.png"
+    fun getImageUrl(urlPart: String?): String {
+        if (urlPart == null) {
+            val index = url?.split("/".toRegex())?.dropLast(1)?.last()
+            return "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/$index.png"
+        }
+        return "http://image.tmdb.org/t/p/w500$urlPart"
     }
 }
 /*
